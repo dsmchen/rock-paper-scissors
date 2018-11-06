@@ -1,62 +1,60 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>rock paper scissors</title>
+        <title>Rock Paper Scissors</title>
     </head>
     <body>
         <script>
-          let playerScore = 0;
-          let computerScore = 0;
+            let playerScore = 0;
+            let computerScore = 0;
 
-          function computerPlay() {
-            let selection = ['rock', 'paper', 'scissors'];
-            let randomSelection = Math.floor(Math.random() * (selection.length));
-            return selection[randomSelection];
-          }
-
-          function playRound(playerSelection, computerSelection) {
-            computerSelection = computerPlay();
-            playerSelection = prompt('Please enter rock, paper or scissors.');
-            let playerLowerCase = playerSelection.toLowerCase();
-            switch (true) {
-              case playerLowerCase == 'rock' && computerSelection == 'scissors':
-              case playerLowerCase == 'paper' && computerSelection == 'rock':
-              case playerLowerCase == 'scissors' && computerSelection == 'paper':
-                return `You win, ${playerSelection} beats ${computerSelection}! Player ${++playerScore} - ${computerScore} Computer.`;
-                break;
-              case playerLowerCase == 'rock' && computerSelection == 'paper':
-              case playerLowerCase == 'paper' && computerSelection == 'scissors':
-              case playerLowerCase == 'scissors' && computerSelection == 'rock':
-                return `You lose, ${computerSelection} beats ${playerSelection}! Player ${playerScore} - ${++computerScore} Computer.`;
-                break;
-              case playerLowerCase == 'rock' && computerSelection == 'rock':
-              case playerLowerCase == 'paper' && computerSelection == 'paper':
-              case playerLowerCase == 'scissors' && computerSelection == 'scissors':
-                return `You draw! Player ${playerScore} - ${computerScore} Computer.`;
-                break;    
-              default:
-                return 'That is not rock, paper or scissors!';
+            function computerPlay() {
+                let selection = ['rock', 'paper', 'scissors'];
+                let randomSelection = Math.floor(Math.random() * (selection.length));
+                return selection[randomSelection];
             }
-          }
 
-          function game() {
-            let computerSelection;
-            let playerSelection;
-            console.log(playRound(playerSelection, computerSelection));
-            console.log(playRound(playerSelection, computerSelection));
-            console.log(playRound(playerSelection, computerSelection));
-            console.log(playRound(playerSelection, computerSelection));
-            console.log(playRound(playerSelection, computerSelection));
-            if (playerScore > computerScore) {
-              console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. Congratulations, you're the winner!`);
-            } else if (computerScore > playerScore) {
-              console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. Sorry, you're the loser!`);
-            } else {
-              console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. It's a draw!`);
+            function playRound(playerSelection, computerSelection) {
+                playerSelection = prompt('Please enter rock, paper or scissors.');
+                let playerLowerCase = playerSelection.toLowerCase();
+                switch (true) {
+                    case playerLowerCase == 'rock' && computerSelection == 'scissors':
+                    case playerLowerCase == 'paper' && computerSelection == 'rock':
+                    case playerLowerCase == 'scissors' && computerSelection == 'paper':
+                        return `You win, ${playerSelection} beats ${computerSelection}! Player ${++playerScore} - ${computerScore} Computer.`;
+                        break;
+                    case playerLowerCase == 'rock' && computerSelection == 'paper':
+                    case playerLowerCase == 'paper' && computerSelection == 'scissors':
+                    case playerLowerCase == 'scissors' && computerSelection == 'rock':
+                        return `You lose, ${computerSelection} beats ${playerSelection}! Player ${playerScore} - ${++computerScore} Computer.`;
+                        break;
+                    case playerLowerCase == 'rock' && computerSelection == 'rock':
+                    case playerLowerCase == 'paper' && computerSelection == 'paper':
+                    case playerLowerCase == 'scissors' && computerSelection == 'scissors':
+                        return `You draw! Player ${playerScore} - ${computerScore} Computer.`;
+                        break;    
+                    default:
+                        return 'That is not rock, paper or scissors!';
+                }
             }
-          }
 
-          console.log(game());
+            function game() {
+                let playerSelection;
+                console.log(playRound(playerSelection, computerPlay()));
+                console.log(playRound(playerSelection, computerPlay()));
+                console.log(playRound(playerSelection, computerPlay()));
+                console.log(playRound(playerSelection, computerPlay()));
+                console.log(playRound(playerSelection, computerPlay()));
+                if (playerScore > computerScore) {
+                    console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. Congratulations, you're the winner!`);
+                } else if (computerScore > playerScore) {
+                    console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. Sorry, you're the loser!`);
+                } else {
+                    console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. It's a draw!`);
+                }
+            }
+
+            console.log(game());
         </script>
     </body>
 </html>
