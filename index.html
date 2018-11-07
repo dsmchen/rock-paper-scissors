@@ -14,8 +14,9 @@
                 return selection[randomSelection];
             }
 
-            function playRound(playerSelection, computerSelection) {
-                playerSelection = prompt('Please enter rock, paper or scissors.');
+            function playRound() {
+                let computerSelection = computerPlay();
+                let playerSelection = prompt('Please enter rock, paper or scissors.');
                 let playerLowerCase = playerSelection.toLowerCase();
                 switch (true) {
                     case playerLowerCase == 'rock' && computerSelection == 'scissors':
@@ -39,12 +40,11 @@
             }
 
             function game() {
-                let playerSelection;
-                console.log(playRound(playerSelection, computerPlay()));
-                console.log(playRound(playerSelection, computerPlay()));
-                console.log(playRound(playerSelection, computerPlay()));
-                console.log(playRound(playerSelection, computerPlay()));
-                console.log(playRound(playerSelection, computerPlay()));
+                console.log(playRound());
+                console.log(playRound());
+                console.log(playRound());
+                console.log(playRound());
+                console.log(playRound());
                 if (playerScore > computerScore) {
                     console.log(`Final Score: Player ${playerScore} - ${computerScore} Computer. Congratulations, you're the winner!`);
                 } else if (computerScore > playerScore) {
