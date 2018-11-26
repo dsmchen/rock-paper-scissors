@@ -19,19 +19,17 @@
                 let playerSelection = prompt('Please enter rock, paper or scissors.');
                 let playerLowerCase = playerSelection.toLowerCase();
                 switch (true) {
-                    case playerLowerCase == 'rock' && computerSelection == 'scissors':
-                    case playerLowerCase == 'paper' && computerSelection == 'rock':
-                    case playerLowerCase == 'scissors' && computerSelection == 'paper':
+                    case playerLowerCase === 'rock' && computerSelection === 'scissors':
+                    case playerLowerCase === 'paper' && computerSelection === 'rock':
+                    case playerLowerCase === 'scissors' && computerSelection === 'paper':
                         return `You win, ${playerSelection} beats ${computerSelection}! Player ${++playerScore} - ${computerScore} Computer.`;
                         break;
-                    case playerLowerCase == 'rock' && computerSelection == 'paper':
-                    case playerLowerCase == 'paper' && computerSelection == 'scissors':
-                    case playerLowerCase == 'scissors' && computerSelection == 'rock':
+                    case playerLowerCase === 'rock' && computerSelection === 'paper':
+                    case playerLowerCase === 'paper' && computerSelection === 'scissors':
+                    case playerLowerCase === 'scissors' && computerSelection === 'rock':
                         return `You lose, ${computerSelection} beats ${playerSelection}! Player ${playerScore} - ${++computerScore} Computer.`;
                         break;
-                    case playerLowerCase == 'rock' && computerSelection == 'rock':
-                    case playerLowerCase == 'paper' && computerSelection == 'paper':
-                    case playerLowerCase == 'scissors' && computerSelection == 'scissors':
+                    case playerLowerCase === computerSelection:
                         return `You draw! Player ${playerScore} - ${computerScore} Computer.`;
                         break;    
                     default:
