@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper Scissors</title>
+    </head>
+    <body>
+
+        <div id='container'>
+            <button id='rock'>Rock</button>
+            <button id='paper'>Paper</button>
+            <button id='scissors'>Scissors</button>
+        </div>
+
+        <script>
+
+            const container = document.querySelector('#container');
+            const score = document.createElement('p');
+            score.classList.add('score');
+            const finalScore = document.createElement('p');
+            finalScore.classList.add('finalScore');
+
+            let playerScore = 0;
+            let computerScore = 0;
+
+            function computerPlay() {
+                let selection = ['rock', 'paper', 'scissors'];
+                let randomSelection = Math.floor(Math.random() * (selection.length));
+                return selection[randomSelection];
+            }
+
+            function playRound(e) {
+                let computerSelection = computerPlay();
+                let playerSelection = e.target.id;
+                switch (true) {
+                    case playerSelection == 'rock' && computerSelection == 'scissors':
+                    case playerSelection == 'paper' && computerSelection == 'rock':
+                    case playerSelection == 'scissors' && computerSelection == 'paper':
+                        score.textContent = `You win, ${playerSelection} beats ${computerSelection}! Player ${++playerScore} - ${computerScore} Computer.`;
+                        break;
+                    case playerSelection == 'rock' && computerSelection == 'paper':
+                    case playerSelection == 'paper' && computerSelection == 'scissors':
+                    case playerSelection == 'scissors' && computerSelection == 'rock':
+                        score.textContent = `You lose, ${computerSelection} beats ${playerSelection}! Player ${playerScore} - ${++computerScore} Computer.`;
+                        break;
+                    case playerSelection == 'rock' && computerSelection == 'rock':
+                    case playerSelection == 'paper' && computerSelection == 'paper':
+                    case playerSelection == 'scissors' && computerSelection == 'scissors':
+                        score.textContent = `You draw! Player ${playerScore} - ${computerScore} Computer.`;
+                        break;    
+                    default:
+                        score.textContent = 'That is not rock, paper or scissors!';
+                    }
+                container.appendChild(score);
+
+                if (playerScore === 5) {
+                    finalScore.textContent = `Final Score: Player ${playerScore} - ${computerScore} Computer. Congratulations, you're the winner!`;
+                } else if (computerScore === 5) {
+                    finalScore.textContent = `Final Score: Player ${playerScore} - ${computerScore} Computer. Sorry, you're the loser!`;
+                }
+                container.appendChild(finalScore);
+            }
+
+            const buttons = document.querySelectorAll('button');
+            buttons.forEach((button) => {
+                button.addEventListener('click', playRound);
+            });
+
+        </script>
+
+    </body>
+</html>
