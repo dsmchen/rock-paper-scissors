@@ -1,4 +1,4 @@
-index.html is Doris's first JavaScript project!
+index.html is Doris's first JavaScript project -- console log version!
 - Declare variables
 - Use operators
 - Use single and backtick quotes for strings
